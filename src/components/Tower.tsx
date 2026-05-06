@@ -1,3 +1,5 @@
+import { WavesTransition } from './WavesTransition';
+
 export function Tower() {
   return (
     <section className="tower-sec">
@@ -16,18 +18,19 @@ export function Tower() {
           <div className="tier t8">Tâm Thức <span className="tier-n">8</span></div>
           <div className="tier t7">Giao Thức <span className="tier-n">7</span></div>
           <div className="tier t6">Duy Thức <span className="tier-n">6</span></div>
-          <div className="z-tag zL" style={{ width: '82%' }}>↑ Vùng Ánh Sáng</div>
+          <div className="z-tag zL" style={{ width: '100%' }}>↑ Vùng Ánh Sáng</div>
           <div style={{ height: '10px' }}></div>
           <div className="tier t5">Ý Thức <span className="tier-n">5</span></div>
           <div className="tier t4">Nhận Thức <span className="tier-n">4</span></div>
-          <div className="z-tag zF" style={{ width: '60%' }}>↑ Vùng Mong Manh</div>
-          <div style={{ height: '10px' }}></div>
+          <div className="z-tag zF" style={{ width: '64%' }}>↑ Vùng Mong Manh</div>
+          <div style={{ height: '24px' }}></div>
           <div className="tier t3">Vô Thức <span className="tier-n">3</span></div>
           <div className="tier t2">Tưởng Thức <span className="tier-n">2</span></div>
           <div className="tier t1">Tà Thức <span className="tier-n">1</span></div>
-          <div className="z-tag zD" style={{ width: '42%' }}>↑ Vùng Hủy Diệt</div>
+          <div className="z-tag zD" style={{ width: '100%' }}>↑ Vùng Hủy Diệt</div>
         </div>
       </div>
+      <WavesTransition color="var(--cream-btn)" />
     </section>
   );
 }

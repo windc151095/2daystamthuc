@@ -1,3 +1,5 @@
+import { WavesTransition } from './WavesTransition';
+
 export function Fit() {
   return (
     <section className="fit">
@@ -30,6 +32,7 @@ export function Fit() {
           </div>
         </div>
       </div>
+      <WavesTransition color="var(--sun-main)" />
     </section>
   );
 }

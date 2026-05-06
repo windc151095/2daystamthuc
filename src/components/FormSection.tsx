@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BookOpenText } from 'lucide-react';
 
 export function FormSection() {
   const [name, setName] = useState('');
@@ -16,17 +17,16 @@ export function FormSection() {
 
   return (
     <section className="form-sec" id="dang-ky">
-      <div className="form-wave-top">
-        <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,35 C360,70 720,0 1080,35 C1260,52 1380,28 1440,35 L1440,0 L0,0 Z" fill="#D0EFEF" />
-        </svg>
-      </div>
       <div className="container" style={{ paddingTop: '60px' }}>
         <div className="rv" style={{ textAlign: 'center' }}>
-          <div className="s-label" style={{ justifyContent: 'center' }}>Ghi Danh Ngay Hôm Nay</div>
+          <div className="s-label" style={{ justifyContent: 'center' }}>
+            <span className="ghi-danh-text">Ghi Danh Miễn Phí</span>
+          </div>
           <h2>Cánh cửa tỉnh thức đang mở.<br /><em>Bạn chọn bước vào?</em></h2>
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '18px auto' }}>
-            <div className="orn-line"></div>🪷<div className="orn-line"></div>
+            <div className="orn-line"></div>
+            <BookOpenText size={20} />
+            <div className="orn-line"></div>
           </div>
           <p className="lead" style={{ margin: '0 auto' }}>Hay quay lại với sự bế tắc cũ — đó là lựa chọn của bạn.</p>
         </div>
@@ -42,7 +42,8 @@ export function FormSection() {
                 <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="Số điện thoại Zalo của bạn…" autoComplete="tel" />
               </div>
               <button className="btn-submit" onClick={handleSubmit}>
-                🪷 Tôi Muốn Tham Gia — Gửi Vé Cho Tôi
+                <BookOpenText size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+                <span className="ghi-danh-text">XÁC NHẬN GHI DANH MIỄN PHÍ</span>
               </button>
               <p className="form-trust">🔒 Thông tin được bảo mật 100% · Chỉ dùng để cấp quyền truy cập lớp học</p>
             </div>

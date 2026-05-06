@@ -1,3 +1,5 @@
+import { WavesTransition } from './WavesTransition';
+
 export function Diagnosis() {
   return (
     <section className="diag">
@@ -31,6 +33,7 @@ export function Diagnosis() {
           <p>Đó chính là <strong>Vô Thức</strong> — con quái vật âm thầm rút cạn sinh khí, tàn phá các mối quan hệ và ví tiền của bạn mỗi ngày. Đã đến lúc bạn phải <strong>tỉnh giấc</strong>.</p>
         </div>
       </div>
+      <WavesTransition color="var(--warm-bg)" />
     </section>
   );
 }

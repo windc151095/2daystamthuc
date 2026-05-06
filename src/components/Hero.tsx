@@ -1,21 +1,31 @@
+import { BookOpenText, Compass } from 'lucide-react';
+
 export function Hero() {
   return (
     <section className="hero">
       <div className="ring"></div><div className="ring"></div><div className="ring"></div><div className="ring"></div><div className="ring"></div>
-      <span className="hero-lotus">🪷</span>
-      <p className="hero-eyebrow">Sự Kiện Trực Tuyến Đặc Biệt · Hệ Sinh Thái Sống Sáng Suốt</p>
+      <span className="hero-lotus"><BookOpenText size={52} /></span>
+      <p className="hero-eyebrow">ZOOM thực hành ứng dụng · Hệ tri thức nền tảng SỐNG SÁNG SUỐT</p>
       <h1 className="hero-title">Tại sao bạn nỗ lực rất nhiều,<br />nhưng bình an và thịnh vượng<br />vẫn <em>từ chối bạn?</em></h1>
-      <p className="hero-sub">02 Ngày Khai Mở Tâm Trí · Sự Khác Biệt: Tâm Thức &amp; Vô Thức</p>
+      <p className="hero-sub">02 Ngày hiểu chỉnh bạn - Sự khác biệt: Tâm thức và Vô thức</p>
       <p className="hero-desc">
-        Bạn không lười biếng. Bạn không kém cỏi.<br />
-        Sự bế tắc, sự lạnh nhạt và những đêm trằn trọc<br />
-        chỉ đến từ một nguyên nhân duy nhất:<br />
-        <strong>Bạn đang để cuộc đời bị điều khiển bởi Vô Thức.</strong>
+        <strong>Đừng để vô thức làm chủ cuộc đời và tương lai của bạn</strong>
       </p>
-      <div className="hero-cta">
-        <a href="#dang-ky" className="btn-hero">🪷 Ghi Danh Nhận Vé VIP Miễn Phí</a>
-        <span className="hero-note">Zoom kín · Giới hạn 100 chỗ · Dành cho người thực sự khao khát thay đổi</span>
+      <div className="hero-cta-group">
+        <div className="hero-cta">
+          <a href="#dang-ky" className="btn-hero">
+            <BookOpenText size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+            <span className="ghi-danh-text">GHI DANH NHẬN VÉ VIP MIỄN PHÍ</span>
+          </a>
+        </div>
+        <div className="hero-cta">
+          <a href="#chan-doan" className="btn-hero-secondary">
+            <Compass size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+            <span className="ghi-danh-text">KHÁM PHÁ THÊM BÊN TRONG BẠN</span>
+          </a>
+        </div>
       </div>
+      <span className="hero-note">Zoom kín · Giới hạn 100 chỗ · Dành cho người thực sự khao khát thay đổi</span>
       <div className="hero-waves">
         <div className="wave wave-1">
           <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

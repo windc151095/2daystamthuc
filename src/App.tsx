@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
+import { BookOpenText } from 'lucide-react';
 import './index.css';
 
 import { Hero } from './components/Hero';
@@ -124,7 +125,9 @@ export default function App() {
 
       <nav id="navbar" style={{ padding: navPadding }}>
         <div className="nav-logo">Sống · Sáng · Suốt</div>
-        <a href="#dang-ky" className="nav-cta">🪷 Ghi Danh Miễn Phí</a>
+        <a href="#dang-ky" className="nav-cta">
+          <BookOpenText size={12} /> <span className="ghi-danh-text">GHI DANH MIỄN PHÍ</span>
+        </a>
       </nav>
 
       <Hero />

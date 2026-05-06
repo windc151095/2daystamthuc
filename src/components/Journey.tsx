@@ -1,3 +1,5 @@
+import { WavesTransition } from './WavesTransition';
+
 export function Journey() {
   return (
     <section className="journey">
@@ -8,7 +10,7 @@ export function Journey() {
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '20px auto' }}>
             <div className="orn-line"></div>❧<div className="orn-line"></div>
           </div>
-          <p className="lead" style={{ margin: '0 auto' }}>Không phải thêm kiến thức. Không phải động lực nhất thời. Đây là công cụ khoa học để bạn tự tay sắp xếp lại tâm trí của chính mình.</p>
+          <p className="lead" style={{ margin: '0 auto' }}>Không phải thêm kiến thức. Không phải động lực nhất thời. Đây là công cụ đóng gói thành công thức để bạn tự tay sắp xếp lại tâm trí của chính mình.</p>
         </div>
         <div className="days-grid">
           <div className="day-card rvL" style={{ transitionDelay: '.1s' }}>
@@ -41,6 +43,7 @@ export function Journey() {
           </div>
         </div>
       </div>
+      <WavesTransition color="var(--warm-bg)" />
     </section>
   );
 }

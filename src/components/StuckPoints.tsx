@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { WavesTransition } from './WavesTransition';
 
 const STUCK_DATA = {
   bn: [
@@ -33,7 +34,7 @@ export function StuckPoints() {
   };
 
   return (
-    <section className="stuck-sec">
+    <section className="stuck-sec" id="chan-doan">
       <div className="container">
         <div className="rv" style={{ textAlign: 'center' }}>
           <div className="s-label" style={{ justifyContent: 'center' }}>Tự Chẩn Đoán</div>
@@ -62,13 +63,16 @@ export function StuckPoints() {
         </div>
 
         <div className="stuck-cta rv" style={{ transitionDelay: '.2s' }}>
-          <span id="selected-count" style={{ color: selectedItems.size > 0 ? 'var(--teal-main)' : 'var(--text-muted)' }}>
+          <span id="selected-count" style={{ color: selectedItems.size > 0 ? 'var(--sun-main)' : 'var(--text-muted)' }}>
             {selectedItems.size === 0 ? 'Bạn chưa chọn điểm nào — hãy thành thật nhìn vào bản thân' : `✓ Bạn đang mắc kẹt ở ${selectedItems.size} điểm — đây là lúc bắt đầu thay đổi`}
           </span>
           <p>Đã chọn xong? Nhắn mình các con số đó.<br />Mình sẽ gửi tặng bạn <strong>công thức Chuyển Dịch Tâm Thức</strong> phù hợp nhất.</p>
-          <a href="#dang-ky" className="nav-cta" style={{ display: 'inline-block', marginTop: '4px' }}>Ghi Danh Nhận Giải Pháp →</a>
+          <a href="#dang-ky" className="btn-secondary" style={{ display: 'inline-block', marginTop: '12px' }}>
+            <span className="ghi-danh-text">Ghi Danh Nhận Giải Pháp →</span>
+          </a>
         </div>
       </div>
+      <WavesTransition color="var(--sun-main)" />
     </section>
   );
 }
