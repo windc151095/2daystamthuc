@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Registration information for attendees",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone", "createdAt"]
+    },
+    "Setting": {
+      "title": "Setting",
+      "description": "Global application configuration",
+      "type": "object",
+      "properties": {
+        "zaloLink": { "type": "string" }
+      },
+      "required": ["zaloLink"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of visitor registrations"
+    },
+    "/settings/{settingId}": {
+      "schema": "Setting",
+      "description": "App settings like Zalo group link"
+    }
+  }
+}

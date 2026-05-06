@@ -1,18 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookOpenText } from 'lucide-react';
+import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import { collection, addDoc, doc, getDoc } from 'firebase/firestore';
 
 export function FormSection() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [zaloLink, setZaloLink] = useState('#');
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    const fetchZaloLink = async () => {
+      try {
+        const settingsSnap = await getDoc(doc(db, 'settings', 'config'));
+        if (settingsSnap.exists()) {
+          setZaloLink(settingsSnap.data().zaloLink || '#');
+        }
+      } catch (err) {
+        console.error("Error fetching Zalo link:", err);
+      }
+    };
+    fetchZaloLink();
+  }, []);
+
+  const handleSubmit = async () => {
     if (!name.trim() || !phone.trim()) {
       alert('Bạn vui lòng điền đầy đủ họ tên và số Zalo nhé 🙏');
       return;
     }
-    setFormSubmitted(true);
-    document.getElementById('dang-ky')?.scrollIntoView({ behavior: 'smooth' });
+    
+    setSubmitting(true);
+    try {
+      await addDoc(collection(db, 'leads'), {
+        name: name.trim(),
+        phone: phone.trim(),
+        createdAt: new Date().toISOString()
+      });
+      setFormSubmitted(true);
+      document.getElementById('dang-ky')?.scrollIntoView({ behavior: 'smooth' });
+    } catch (err) {
+      handleFirestoreError(err, OperationType.CREATE, 'leads');
+      alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -35,15 +67,15 @@ export function FormSection() {
             <div>
               <div className="form-group">
                 <label>Họ và Tên</label>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nhập họ tên của bạn…" autoComplete="name" />
+                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nhập họ tên của bạn…" autoComplete="name" disabled={submitting} />
               </div>
               <div className="form-group">
                 <label>Số Zalo · Nhận Vé &amp; Tài Liệu</label>
-                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="Số điện thoại Zalo của bạn…" autoComplete="tel" />
+                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="Số điện thoại Zalo của bạn…" autoComplete="tel" disabled={submitting} />
               </div>
-              <button className="btn-submit" onClick={handleSubmit}>
+              <button className="btn-submit" onClick={handleSubmit} disabled={submitting}>
                 <BookOpenText size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
-                <span className="ghi-danh-text">XÁC NHẬN GHI DANH MIỄN PHÍ</span>
+                <span className="ghi-danh-text">{submitting ? 'ĐANG XỬ LÝ...' : 'XÁC NHẬN GHI DANH MIỄN PHÍ'}</span>
               </button>
               <p className="form-trust">🔒 Thông tin được bảo mật 100% · Chỉ dùng để cấp quyền truy cập lớp học</p>
             </div>
@@ -54,7 +86,7 @@ export function FormSection() {
               <p>Vé Zoom, ID và Mật khẩu sẽ <strong>chỉ được phát trong Group Zalo kín</strong>.<br />
                 Tặng kèm: Ebook <em>"Bản đồ Tâm Thức"</em> để bạn đọc trước.<br /><br />
                 Hãy bấm vào nút bên dưới để vào Group nhận vé ngay!</p>
-              <a href="#" className="btn-zalo">💬 Vào Group Zalo Nhận Vé Ngay</a>
+              <a href={zaloLink} target="_blank" rel="noreferrer" className="btn-zalo">💬 Vào Group Zalo Nhận Vé Ngay</a>
             </div>
           )}
         </div>

@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { BookOpenText } from 'lucide-react';
 import './index.css';
 
@@ -14,8 +15,9 @@ import { Tower } from './components/Tower';
 import { Journey } from './components/Journey';
 import { Fit } from './components/Fit';
 import { FormSection } from './components/FormSection';
+import { Admin } from './components/Admin';
 
-export default function App() {
+function Home() {
   const [navPadding, setNavPadding] = useState('16px 40px');
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -142,5 +144,16 @@ export default function App() {
         <p>© 2025 <span>Sống Sáng Suốt</span> &nbsp;·&nbsp; Rèn Tâm – Sáng Trí – Vững Bước &nbsp;·&nbsp; Chuyển Dịch Tâm Thức – Kiến Tạo Cuộc Đời</p>
       </footer>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </Router>
   );
 }
