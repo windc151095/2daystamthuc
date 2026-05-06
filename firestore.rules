@@ -13,20 +13,18 @@ service cloud.firestore {
     
     function isValidLead(data) {
       return data.keys().hasAll(['name', 'phone', 'createdAt']) &&
-             data.keys().size() == 3 &&
              data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
-             data.phone is string && data.phone.size() >= 10 && data.phone.size() <= 15 &&
-             data.createdAt is string;
+             data.phone is string && data.phone.size() >= 8 && data.phone.size() <= 20 &&
+             data.createdAt is timestamp;
     }
 
     function isSystemAdmin() {
-      // For this app, we trust the specific user email or a specific internal role
-      return isSignedIn() && (request.auth.token.email == 'congnguyen151095@gmail.com');
+      return isSignedIn() && (request.auth.token.email == 'congnguyen151095@gmail.com' && request.auth.token.email_verified == true);
     }
 
     // Leads collection
     match /leads/{leadId} {
-      allow create: if isValidLead(request.resource.data);
+      allow create: if isValidLead(request.resource.data) && request.resource.data.createdAt == request.time;
       allow list, get: if isSystemAdmin();
       allow delete: if isSystemAdmin();
     }

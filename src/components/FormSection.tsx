@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BookOpenText } from 'lucide-react';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
-import { collection, addDoc, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, getDoc, serverTimestamp } from 'firebase/firestore';
 
 export function FormSection() {
   const [name, setName] = useState('');
@@ -32,16 +32,18 @@ export function FormSection() {
     
     setSubmitting(true);
     try {
-      await addDoc(collection(db, 'leads'), {
+      const leadsRef = collection(db, 'leads');
+      await addDoc(leadsRef, {
         name: name.trim(),
-        phone: phone.trim(),
-        createdAt: new Date().toISOString()
+        phone: phone.trim().replace(/\s/g, ''),
+        createdAt: serverTimestamp()
       });
       setFormSubmitted(true);
       document.getElementById('dang-ky')?.scrollIntoView({ behavior: 'smooth' });
     } catch (err) {
-      handleFirestoreError(err, OperationType.CREATE, 'leads');
-      alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+      console.error("Submission error:", err);
+      // Fallback for debugging
+      alert('Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra lại kết nối mạng.');
     } finally {
       setSubmitting(false);
     }
