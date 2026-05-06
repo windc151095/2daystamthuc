@@ -90,6 +90,15 @@ nav {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(184,134,11,.3);
 }
+.nav-admin-link {
+  width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); border-radius: 50%; border: 1px solid rgba(184,134,11,.1);
+  transition: all .3s;
+}
+.nav-admin-link:hover {
+  background: rgba(184,134,11,0.05); color: var(--sun-main); border-color: var(--sun-main);
+  transform: translateY(-1px);
+}
 @media(max-width:480px) {
   .nav-cta { padding: 8px 14px; letter-spacing: 1px; }
 }

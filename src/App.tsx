@@ -5,7 +5,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { BookOpenText } from 'lucide-react';
+import { BookOpenText, User } from 'lucide-react';
 import './index.css';
 
 import { Hero } from './components/Hero';
@@ -127,9 +127,14 @@ function Home() {
 
       <nav id="navbar" style={{ padding: navPadding }}>
         <div className="nav-logo">Sống · Sáng · Suốt</div>
-        <a href="#dang-ky" className="nav-cta">
-          <BookOpenText size={12} /> <span className="ghi-danh-text">GHI DANH MIỄN PHÍ</span>
-        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <a href="#dang-ky" className="nav-cta">
+            <BookOpenText size={12} /> <span className="ghi-danh-text">GHI DANH MIỄN PHÍ</span>
+          </a>
+          <Link to="/admin" className="nav-admin-link" title="Quản trị">
+            <User size={16} />
+          </Link>
+        </div>
       </nav>
 
       <Hero />
