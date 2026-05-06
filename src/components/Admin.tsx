@@ -112,10 +112,10 @@ export function Admin() {
     setSuccess('');
     try {
       const settingsRef = doc(db, 'settings', 'config');
-      await updateDoc(settingsRef, { zaloLink });
+      await setDoc(settingsRef, { zaloLink }, { merge: true });
       setSuccess('Cập nhật link Zalo thành công!');
     } catch (err) {
-      handleFirestoreError(err, OperationType.UPDATE, 'settings/config');
+      handleFirestoreError(err, OperationType.WRITE, 'settings/config');
     } finally {
       setLoading(false);
     }

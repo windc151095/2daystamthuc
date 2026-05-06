@@ -32,7 +32,7 @@ service cloud.firestore {
     // Settings collection
     match /settings/{settingId} {
       allow get: if true;
-      allow update: if isSystemAdmin() && 
+      allow create, update: if isSystemAdmin() && 
                     request.resource.data.keys().hasOnly(['zaloLink']) &&
                     request.resource.data.zaloLink is string;
     }
