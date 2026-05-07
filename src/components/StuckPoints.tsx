@@ -38,11 +38,11 @@ export function StuckPoints() {
       <div className="container">
         <div className="rv" style={{ textAlign: 'center' }}>
           <div className="s-label" style={{ justifyContent: 'center' }}>Tự Chẩn Đoán</div>
-          <h2>60 Điểm Mắc Kẹt<br /><em>Bạn đang bị trói ở số nào?</em></h2>
+          <h2>60 Điểm Mắc Kẹt<br /><em>Bạn muốn cởi trói mình bởi vấn đề nào?</em></h2>
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '300px', margin: '20px auto' }}>
             <div className="orn-line"></div>✦<div className="orn-line"></div>
           </div>
-          <p className="lead" style={{ margin: '0 auto' }}>Chọn những điểm bạn đang gặp phải. Hãy thành thật với chính mình.</p>
+          <p className="lead" style={{ margin: '0 auto', maxWidth: '800px' }}>Chọn những điểm bạn đang gặp phải. Hãy thành thật với chính mình.<br />Tâm thức là chìa khóa để giải mã các biến nghịch một cách linh hoạt, hiệu quả</p>
         </div>
 
         <div className="stuck-tabs rv" style={{ transitionDelay: '.1s' }}>
@@ -63,12 +63,9 @@ export function StuckPoints() {
         </div>
 
         <div className="stuck-cta rv" style={{ transitionDelay: '.2s' }}>
-          <span id="selected-count" style={{ color: selectedItems.size > 0 ? 'var(--sun-main)' : 'var(--text-muted)' }}>
-            {selectedItems.size === 0 ? 'Bạn chưa chọn điểm nào — hãy thành thật nhìn vào bản thân' : `✓ Bạn đang mắc kẹt ở ${selectedItems.size} điểm — đây là lúc bắt đầu thay đổi`}
-          </span>
-          <p>Đã chọn xong? Nhắn mình các con số đó.<br />Mình sẽ gửi tặng bạn <strong>công thức Chuyển Dịch Tâm Thức</strong> phù hợp nhất.</p>
+          <p>Đã chọn xong, mình gửi tặng bạn <strong>công thức chuyển dịch</strong></p>
           <a href="#dang-ky" className="btn-secondary" style={{ display: 'inline-block', marginTop: '12px' }}>
-            <span className="ghi-danh-text">Ghi Danh Nhận Giải Pháp →</span>
+            <span className="ghi-danh-text">NHẬN CÔNG THỨC DỊCH CHUYỂN</span>
           </a>
         </div>
       </div>

@@ -3,9 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect, useRef, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { BookOpenText, User } from 'lucide-react';
+import React, { useEffect, useRef, useState, FormEvent } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Gift, User, X } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { motion, useAnimation } from 'motion/react';
 import './index.css';
 
 import { Hero } from './components/Hero';
@@ -20,7 +22,46 @@ import { Admin } from './components/Admin';
 function Home() {
   const [navPadding, setNavPadding] = useState('16px 40px');
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [showLogin, setShowLogin] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const navigate = useNavigate();
+
+    const handleLogin = (e: FormEvent) => {
+    e.preventDefault();
+    if (username === 'tamthucsss' && password === 'sss6868') {
+      sessionStorage.setItem('admin_auth', 'true');
+      setShowLogin(false);
+      navigate('/admin');
+    } else {
+      setError('Sai tài khoản hoặc mật khẩu');
+    }
+  };
+
+  const giftControls = useAnimation();
+
+  const handleGiftClick = (e: React.MouseEvent) => {
+    // Confetti burst
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (rect.left + rect.width / 2) / window.innerWidth;
+    const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { x, y },
+      colors: ['#b8860b', '#ffd700', '#ffffff', '#f4e6d4']
+    });
+
+    // Animation for the gift icon
+    giftControls.start({
+      rotate: [0, -10, 10, -10, 10, 0],
+      scale: [1, 1.2, 1],
+      transition: { duration: 0.5 }
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,13 +168,53 @@ function Home() {
 
       <nav id="navbar" style={{ padding: navPadding }}>
         <div className="nav-logo">Sống · Sáng · Suốt</div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <a href="#dang-ky" className="nav-cta">
-            <BookOpenText size={12} /> <span className="ghi-danh-text">GHI DANH MIỄN PHÍ</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
+          <a href="#dang-ky" className="nav-cta" onClick={handleGiftClick}>
+            <motion.span animate={giftControls} style={{ display: 'inline-flex' }}>
+              <Gift size={12} />
+            </motion.span>
+            <span className="ghi-danh-text" style={{ marginLeft: '4px' }}>GHI DANH MIỄN PHÍ</span>
           </a>
-          <Link to="/admin" className="nav-admin-link" title="Quản trị">
+          <button 
+            className="nav-admin-link" 
+            title="Quản trị"
+            onClick={() => {
+              if (sessionStorage.getItem('admin_auth') === 'true') {
+                navigate('/admin');
+              } else {
+                setShowLogin(!showLogin);
+                setError('');
+              }
+            }}
+          >
             <User size={16} />
-          </Link>
+          </button>
+
+          {showLogin && (
+            <div className="login-popup">
+              <div className="popup-header">
+                <span>Quản Trị Viên</span>
+                <button onClick={() => setShowLogin(false)}><X size={14} /></button>
+              </div>
+              <form onSubmit={handleLogin}>
+                <input 
+                  type="text" 
+                  placeholder="Tài khoản" 
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  autoFocus
+                />
+                <input 
+                  type="password" 
+                  placeholder="Mật khẩu" 
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                {error && <div className="popup-error">{error}</div>}
+                <button type="submit">ĐĂNG NHẬP</button>
+              </form>
+            </div>
+          )}
         </div>
       </nav>
 

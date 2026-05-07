@@ -1,31 +1,60 @@
-import { BookOpenText, Compass } from 'lucide-react';
+import React from 'react';
+import { Gift, Compass } from 'lucide-react';
+import { motion } from 'motion/react';
+import confetti from 'canvas-confetti';
 
 export function Hero() {
+  const handleHeroGiftClick = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (rect.left + rect.width / 2) / window.innerWidth;
+    const y = (rect.top + rect.height / 2) / window.innerHeight;
+    
+    confetti({
+      particleCount: 100,
+      spread: 60,
+      origin: { x, y },
+      colors: ['#b8860b', '#ffd700']
+    });
+  };
+
   return (
     <section className="hero">
-      <div className="ring"></div><div className="ring"></div><div className="ring"></div><div className="ring"></div><div className="ring"></div>
-      <span className="hero-lotus"><BookOpenText size={52} /></span>
-      <p className="hero-eyebrow">ZOOM thực hành ứng dụng · Hệ tri thức nền tảng SỐNG SÁNG SUỐT</p>
-      <h1 className="hero-title">Tại sao bạn nỗ lực rất nhiều,<br />nhưng bình an và thịnh vượng<br />vẫn <em>từ chối bạn?</em></h1>
-      <p className="hero-sub">02 Ngày hiểu chỉnh bạn - Sự khác biệt: Tâm thức và Vô thức</p>
-      <p className="hero-desc">
-        <strong>Đừng để vô thức làm chủ cuộc đời và tương lai của bạn</strong>
+      <motion.span 
+        className="hero-lotus"
+        initial={{ scale: 0, rotate: -45 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ type: 'spring', damping: 10 }}
+      >
+        <Gift size={52} />
+      </motion.span>
+      <div className="hero-program-badge">
+        <span className="badge-icon">✦</span>
+        <span>Chương Trình ZOOM 8 Ngày Thực Hành</span>
+      </div>
+      <h1 className="hero-title"><span className="text-highlight">Tâm Thức</span> & Vô Thức<br />Sự Khác Biệt Thay Đổi<br />Tất Cả</h1>
+      <p className="hero-sub" style={{ maxWidth: '800px', margin: '0 auto 40px' }}>
+        Khi bạn hiểu tâm thức vận hành như thế nào — bạn sẽ thấy vì sao bản thân, gia đình và công việc của mình đang chạy guồng quay theo những vòng lặp mà bạn không tự chọn.
       </p>
       <div className="hero-cta-group">
         <div className="hero-cta">
-          <a href="#dang-ky" className="btn-hero">
-            <BookOpenText size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
-            <span className="ghi-danh-text">GHI DANH NHẬN VÉ VIP MIỄN PHÍ</span>
+          <a href="#dang-ky" className="btn-hero" onClick={handleHeroGiftClick}>
+            <motion.span
+              whileHover={{ rotate: 15, scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              style={{ display: 'inline-flex', marginRight: '8px', verticalAlign: 'middle' }}
+            >
+              <Gift size={16} />
+            </motion.span>
+            <span className="ghi-danh-text">Ghi danh nhận tài liệu trải nghiệm 2 ngày</span>
           </a>
         </div>
         <div className="hero-cta">
           <a href="#chan-doan" className="btn-hero-secondary">
             <Compass size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
-            <span className="ghi-danh-text">KHÁM PHÁ THÊM BÊN TRONG BẠN</span>
+            <span className="ghi-danh-text">Khám phá thêm bên trong bạn</span>
           </a>
         </div>
       </div>
-      <span className="hero-note">Zoom kín · Giới hạn 100 chỗ · Dành cho người thực sự khao khát thay đổi</span>
       <div className="hero-waves">
         <div className="wave wave-1">
           <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

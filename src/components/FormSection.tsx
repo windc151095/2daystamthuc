@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { BookOpenText } from 'lucide-react';
+import { Gift } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { motion } from 'motion/react';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
 import { collection, addDoc, doc, getDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -59,7 +61,12 @@ export function FormSection() {
           <h2>Cánh cửa tỉnh thức đang mở.<br /><em>Bạn chọn bước vào?</em></h2>
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '18px auto' }}>
             <div className="orn-line"></div>
-            <BookOpenText size={20} />
+            <motion.div
+              animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            >
+              <Gift size={20} />
+            </motion.div>
             <div className="orn-line"></div>
           </div>
           <p className="lead" style={{ margin: '0 auto' }}>Hay quay lại với sự bế tắc cũ — đó là lựa chọn của bạn.</p>
@@ -75,8 +82,22 @@ export function FormSection() {
                 <label>Số Zalo · Nhận Vé &amp; Tài Liệu</label>
                 <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="Số điện thoại Zalo của bạn…" autoComplete="tel" disabled={submitting} />
               </div>
-              <button className="btn-submit" onClick={handleSubmit} disabled={submitting}>
-                <BookOpenText size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+              <button className="btn-submit" onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                confetti({
+                  particleCount: 100,
+                  spread: 60,
+                  origin: { x: (rect.left + rect.width / 2) / window.innerWidth, y: (rect.top + rect.height / 2) / window.innerHeight }
+                });
+                handleSubmit();
+              }} disabled={submitting}>
+                <motion.span
+                  animate={submitting ? { rotate: 360 } : {}}
+                  transition={submitting ? { repeat: Infinity, duration: 1, ease: 'linear' } : {}}
+                  style={{ display: 'inline-flex', verticalAlign: 'middle', marginRight: '8px' }}
+                >
+                  <Gift size={14} />
+                </motion.span>
                 <span className="ghi-danh-text">{submitting ? 'ĐANG XỬ LÝ...' : 'XÁC NHẬN GHI DANH MIỄN PHÍ'}</span>
               </button>
               <p className="form-trust">🔒 Thông tin được bảo mật 100% · Chỉ dùng để cấp quyền truy cập lớp học</p>
