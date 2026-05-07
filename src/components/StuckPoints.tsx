@@ -40,7 +40,7 @@ export function StuckPoints() {
           <div className="s-label" style={{ justifyContent: 'center' }}>Tự Chẩn Đoán</div>
           <h2>60 Điểm Mắc Kẹt<br /><em>Bạn muốn cởi trói mình bởi vấn đề nào?</em></h2>
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '300px', margin: '20px auto' }}>
-            <div className="orn-line"></div>✦<div className="orn-line"></div>
+            <div className="orn-line"></div>☯<div className="orn-line"></div>
           </div>
           <p className="lead" style={{ margin: '0 auto', maxWidth: '800px' }}>Chọn những điểm bạn đang gặp phải. Hãy thành thật với chính mình.<br />Tâm thức là chìa khóa để giải mã các biến nghịch một cách linh hoạt, hiệu quả</p>
         </div>

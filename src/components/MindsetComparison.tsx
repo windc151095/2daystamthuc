@@ -6,9 +6,9 @@ export const MindsetComparison: React.FC = () => {
       <div className="container">
         <div className="rv text-center">
           <div className="s-label" style={{ justifyContent: 'center' }}>LỰA CHỌN CỦA BẠN</div>
-          <h2>Bạn Muốn Sống <em>Vô Thức</em> Hay <em>Tâm Thức?</em></h2>
+          <h2>Bạn Chọn Sống <em>Vô Thức</em> Hay <em>Tâm Thức?</em></h2>
           <div className="orn form-orn-fix">
-            <div className="orn-line"></div>✦<div className="orn-line"></div>
+            <div className="orn-line"></div>☯<div className="orn-line"></div>
           </div>
         </div>
 
@@ -18,8 +18,11 @@ export const MindsetComparison: React.FC = () => {
               <div className="vs-header">
                 <span className="vs-icon-main">●</span>
                 <div className="vs-titles">
-                  <h3>Sống Từ Vô Thức</h3>
-                  <p>Chế độ mặc định — chảy ra trước mọi tình huống</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <h3>Sống Vô Thức</h3>
+                    <a href="#faq" style={{ padding: '4px 12px', fontSize: '11px', borderRadius: '4px', background: 'var(--ink-soft)', color: '#fff', textDecoration: 'none', fontWeight: 'bold' }}>CHỌN</a>
+                  </div>
+                  <p>Sống theo bản năng, nhân sinh quan hình thành</p>
                 </div>
               </div>
               <ul className="vs-list">
@@ -36,7 +39,10 @@ export const MindsetComparison: React.FC = () => {
               <div className="vs-header">
                 <span className="vs-icon-main">✦</span>
                 <div className="vs-titles">
-                  <h3>Sống Từ Tâm Thức</h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <h3>Sống Tâm Thức</h3>
+                    <a href="#dang-ky" style={{ padding: '4px 12px', fontSize: '11px', borderRadius: '4px', background: 'var(--sun-main)', color: '#fff', textDecoration: 'none', fontWeight: 'bold' }}>CHỌN</a>
+                  </div>
                   <p>Phải học, phải thực hành — không tự nhiên mà có</p>
                 </div>
               </div>
