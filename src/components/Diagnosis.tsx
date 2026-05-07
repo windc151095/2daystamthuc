@@ -36,7 +36,7 @@ export function Diagnosis() {
       icon: "🤷",
       title: "Không Biết Mình Thực Sự Muốn Gì",
       desc: "Làm việc vì áp lực, sống vì kỳ vọng người khác. Chưa từng thật sự hỏi: mình muốn gì? Mình là ai ngoài vai trò xã hội?",
-      insight: "Tâm thức dẫn ánh sáng,con đường thấy rõ tương lai"
+      insight: "Đánh mất đi bản thân, tương lai của chính mình"
     }
   ];
 
