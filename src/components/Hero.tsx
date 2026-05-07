@@ -29,11 +29,11 @@ export function Hero() {
       </motion.span>
       <div className="hero-program-badge">
         <span className="badge-icon">✦</span>
-        <span>Chương Trình ZOOM 8 Ngày Thực Hành</span>
+        <span>HÀNH LÀ TĂNG HIỂU BIẾT - NĂNG LỰC THẬT - BÀI HỌC SÂU SẮC MỖI NGÀY</span>
       </div>
-      <h1 className="hero-title"><span className="text-highlight">Tâm Thức</span> & Vô Thức<br />Sự Khác Biệt Thay Đổi<br />Tất Cả</h1>
-      <p className="hero-sub" style={{ maxWidth: '800px', margin: '0 auto 40px' }}>
-        Khi bạn hiểu tâm thức vận hành như thế nào — bạn sẽ thấy vì sao bản thân, gia đình và công việc của mình đang chạy guồng quay theo những vòng lặp mà bạn không tự chọn.
+      <h1 className="hero-title">Sử dụng <span className="text-highlight">Tâm Thức</span><br />đạt đến quyết định và hành động<br />chính xác</h1>
+      <p className="hero-sub" style={{ maxWidth: '800px', margin: '0 auto 40px', fontWeight: 600, letterSpacing: '0.05em' }}>
+        trong BẢN THÂN - GIA ĐÌNH - SỰ NGHIỆP
       </p>
       <div className="hero-cta-group">
         <div className="hero-cta">
@@ -45,7 +45,7 @@ export function Hero() {
             >
               <Gift size={16} />
             </motion.span>
-            <span className="ghi-danh-text">Ghi danh nhận tài liệu trải nghiệm 2 ngày</span>
+            <span className="ghi-danh-text">GHI DANH NHẬN TÀI LIỆU HỌC TẬP</span>
           </a>
         </div>
         <div className="hero-cta">

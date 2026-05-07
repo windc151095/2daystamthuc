@@ -74,6 +74,15 @@ export function FormSection() {
         <div className="form-shell rv" style={{ transitionDelay: '.15s' }}>
           {!formSubmitted ? (
             <div>
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h3 style={{ textTransform: 'uppercase', color: 'var(--sun-main)', letterSpacing: '2px', fontSize: '22px', fontWeight: '700', marginBottom: '8px', lineHeight: '1.2' }}>
+                  Đăng Ký Trải Nghiệm
+                </h3>
+                <p style={{ opacity: 0.7, fontSize: '15px', color: 'var(--ink)' }}>
+                  Nhận tài liệu và ZOOM hướng dẫn học - thực hành
+                </p>
+              </div>
+
               <div className="form-group">
                 <label>Họ và Tên</label>
                 <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nhập họ tên của bạn…" autoComplete="name" disabled={submitting} />

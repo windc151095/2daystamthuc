@@ -6,7 +6,7 @@ export function Fit() {
       <div className="container">
         <div className="rv" style={{ textAlign: 'center' }}>
           <div className="s-label" style={{ justifyContent: 'center' }}>Ai Nên Tham Gia?</div>
-          <h2>Sự kiện này <em>dành cho bạn</em> — hay không?</h2>
+          <h2>Hành trình này <em>dành cho bạn</em> — hay không?</h2>
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '20px auto' }}>
             <div className="orn-line"></div>☯<div className="orn-line"></div>
           </div>
@@ -19,6 +19,7 @@ export function Fit() {
               <li>Cần công cụ khoa học, logic để tự giải phẫu tâm trí</li>
               <li>Sẵn sàng đối diện sự thật dù đôi khi không dễ chịu</li>
               <li>Muốn thay đổi thực sự — không chỉ cảm thấy tốt hơn tạm thời</li>
+              <li>Cần công cụ ra quyết định nhanh - hiệu quả cao - chính xác</li>
             </ul>
           </div>
           <div className="fit-block fit-no rvR" style={{ transitionDelay: '.2s' }}>

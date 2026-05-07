@@ -12,9 +12,7 @@ import './index.css';
 
 import { Hero } from './components/Hero';
 import { Diagnosis } from './components/Diagnosis';
-import { StuckPoints } from './components/StuckPoints';
 import { Tower } from './components/Tower';
-import { Journey } from './components/Journey';
 import { Fit } from './components/Fit';
 import { FormSection } from './components/FormSection';
 import { Admin } from './components/Admin';
@@ -223,9 +221,7 @@ function Home() {
 
       <Hero />
       <Diagnosis />
-      <StuckPoints />
       <Tower />
-      <Journey />
       <Fit />
       <FormSection />
 
