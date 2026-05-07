@@ -308,11 +308,16 @@ nav {
 }
 .hero-program-badge span {
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: clamp(7px, 1.5vw, 11px);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--sun-main);
+  white-space: nowrap;
+}
+@media(max-width:480px){
+  .hero-program-badge { padding: 6px 12px; margin-bottom: 20px; }
+  .hero-program-badge span { letter-spacing: 0.5px; }
 }
 .badge-icon {
   font-size: 14px;
@@ -1065,6 +1070,16 @@ h2 em { font-style: normal; color: var(--gold-accent); }
   background: linear-gradient(90deg, var(--sun-border), var(--gold-accent), var(--sun-border));
   animation: top-shimmer 4s ease-in-out infinite;
 }
+.form-container-fix { padding-top: 60px; }
+.form-orn-fix { justify-content: center; max-width: 280px; margin: 18px auto; }
+.form-header-fix { text-align: center; margin-bottom: 40px; }
+.form-title-fix { text-transform: uppercase; color: var(--sun-main); letter-spacing: 2px; font-size: clamp(20px, 4vw, 24px); font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
+.form-subtitle-fix { opacity: 0.7; font-size: clamp(14px, 2vw, 17px); color: var(--ink); }
+
+@media(max-width: 640px) {
+  .form-container-fix { padding-top: 0px; }
+  .form-header-fix { margin-bottom: 24px; }
+}
 @keyframes top-shimmer {
   0%,100%{ background-position:0% 50%; }
   50%    { background-position:100% 50%; }
@@ -1147,9 +1162,27 @@ footer span { color: var(--sun-border); font-weight: 700; }
 }
 
 /* ── RESPONSIVE ── */
+@media(max-width:768px){
+  section { padding: 64px 20px; }
+  .comp-card { padding: 32px 24px; }
+  .tower-wrap { padding: 0 40px; }
+  .tier-n { right: -30px; font-size: 10px; }
+}
+
 @media(max-width:640px){
   nav { padding:14px 20px; }
   .form-shell { padding:36px 24px; }
   .pain-card, .day-head, .day-body, .fit-block { padding:28px 22px; }
-  .stuck-list { grid-template-columns:1fr 1fr; }
+  .stuck-list { grid-template-columns:1fr; }
+  .tower-wrap { padding: 0 32px; width: 100%; }
+  .tier-n { right: -24px; }
+  .hero-title { font-size: clamp(28px, 10vw, 40px); }
+  .vs-circle-wrap { margin: -20px auto; }
+}
+
+@media(max-width:400px){
+  .tower-wrap { padding: 0 20px; }
+  .tier-n { right: -12px; opacity: 0.8; font-weight: 700; color: rgba(0,0,0,0.2) }
+  .t8 .tier-n, .t7 .tier-n, .t6 .tier-n { color: var(--sun-main); }
+  .tier { letter-spacing: 1px; font-size: 11px; }
 }

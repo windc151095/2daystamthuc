@@ -4,13 +4,13 @@ export function Tower() {
   return (
     <section className="tower-sec">
       <div className="container">
-        <div className="rv" style={{ textAlign: 'center' }}>
+        <div className="rv text-center">
           <div className="s-label" style={{ justifyContent: 'center' }}>Bản Đồ Tâm Thức</div>
           <h2>Tháp Ánh Sáng<br /><em>Bạn đang ở tầng nào?</em></h2>
-          <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '20px auto' }}>
+          <div className="orn form-orn-fix">
             <div className="orn-line"></div>✦<div className="orn-line"></div>
           </div>
-          <p className="lead" style={{ margin: '0 auto' }}>8 tầng tâm thức — Nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức từng hành vi, lời nói, suy nghĩ thông qua tháp ánh sáng</p>
+          <p className="lead mx-auto">8 tầng tâm thức — Nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức từng hành vi, lời nói, suy nghĩ thông qua tháp ánh sáng</p>
         </div>
         <div className="tower-wrap rv" style={{ transitionDelay: '.2s' }}>
           <div className="tier t8">Tâm Thức <span className="tier-n">8</span></div>

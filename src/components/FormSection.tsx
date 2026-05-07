@@ -53,13 +53,13 @@ export function FormSection() {
 
   return (
     <section className="form-sec" id="dang-ky">
-      <div className="container" style={{ paddingTop: '60px' }}>
-        <div className="rv" style={{ textAlign: 'center' }}>
+      <div className="container form-container-fix">
+        <div className="rv text-center">
           <div className="s-label" style={{ justifyContent: 'center' }}>
             <span className="ghi-danh-text">Ghi Danh Miễn Phí</span>
           </div>
           <h2>Cánh cửa tâm thức đang mở.<br /><em>Bạn chọn bước vào?</em></h2>
-          <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '18px auto' }}>
+          <div className="orn form-orn-fix">
             <div className="orn-line"></div>
             <motion.div
               animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
@@ -74,11 +74,11 @@ export function FormSection() {
         <div className="form-shell rv" style={{ transitionDelay: '.15s' }}>
           {!formSubmitted ? (
             <div>
-              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                <h3 style={{ textTransform: 'uppercase', color: 'var(--sun-main)', letterSpacing: '2px', fontSize: '24px', fontWeight: '700', marginBottom: '8px', lineHeight: '1.2' }}>
+              <div className="form-header-fix">
+                <h3 className="form-title-fix">
                   Đăng Ký Trải Nghiệm
                 </h3>
-                <p style={{ opacity: 0.7, fontSize: '17px', color: 'var(--ink)' }}>
+                <p className="form-subtitle-fix">
                   Nhận tài liệu và ZOOM hướng dẫn học - thực hành
                 </p>
               </div>

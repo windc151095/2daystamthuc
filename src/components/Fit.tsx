@@ -4,10 +4,10 @@ export function Fit() {
   return (
     <section className="fit">
       <div className="container">
-        <div className="rv" style={{ textAlign: 'center' }}>
+        <div className="rv text-center">
           <div className="s-label" style={{ justifyContent: 'center' }}>Ai Nên Tham Gia?</div>
           <h2>Hành trình này <em>dành cho bạn</em> — hay không?</h2>
-          <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '20px auto' }}>
+          <div className="orn form-orn-fix">
             <div className="orn-line"></div>☯<div className="orn-line"></div>
           </div>
         </div>

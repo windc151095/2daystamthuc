@@ -63,10 +63,17 @@ function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setNavPadding(window.scrollY > 60 ? '10px 40px' : '16px 40px');
+      const isMobile = window.innerWidth <= 640;
+      const hPad = isMobile ? '20px' : '40px';
+      setNavPadding(window.scrollY > 60 ? `10px ${hPad}` : `16px ${hPad}`);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
