@@ -167,7 +167,10 @@ function Home() {
       <canvas id="cvs" ref={canvasRef}></canvas>
 
       <nav id="navbar" style={{ padding: navPadding }}>
-        <div className="nav-logo">Sống · Sáng · Suốt</div>
+        <div className="nav-logo-group">
+          <div className="nav-logo">Sống · Sáng · Suốt</div>
+          <div className="nav-slogan">Suốt ngày sống – Suốt ngày sáng – Suốt đời sống – Suốt đời sáng</div>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
           <a href="#dang-ky" className="nav-cta" onClick={handleGiftClick}>
             <motion.span animate={giftControls} style={{ display: 'inline-flex' }}>

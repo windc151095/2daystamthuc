@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -17,7 +17,7 @@
 
   --serif: 'Playfair Display', 'EB Garamond', Georgia, serif;
   --body:  'EB Garamond', Georgia, serif;
-  --sans:  'Nunito', system-ui, sans-serif;
+  --sans:  'Nunito Sans', system-ui, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,15 +60,33 @@ nav {
 @media(max-width:640px) {
   nav { padding: 12px 16px; }
 }
+.nav-logo-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
 .nav-logo {
-  font-family: var(--serif); font-size: clamp(12px, 1.5vw, 15px); font-weight: 700;
-  letter-spacing: 0.25em; text-transform: uppercase;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--sun-main);
   animation: logo-glow 4s ease-in-out infinite;
   white-space: nowrap;
 }
+.nav-slogan {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: clamp(8px, 1.2vw, 10px);
+  font-weight: 600;
+  color: var(--sun-main);
+  letter-spacing: 0.02em;
+  margin-top: 3px;
+  white-space: nowrap;
+}
 @media(max-width:480px) {
-  .nav-logo { letter-spacing: 0.15em; font-size: 11px; }
+  .nav-logo { letter-spacing: 0.03em; font-size: 11px; }
+  .nav-slogan { font-size: 7px; margin-top: 1px; }
 }
 @keyframes logo-glow {
   0%,100% { opacity: 0.8; }
@@ -983,7 +1001,7 @@ footer {
   padding: 36px 24px; text-align: center;
 }
 footer p { font-family: var(--sans); font-size: 12px; letter-spacing: 2px; color: var(--sun-muted); }
-footer span { color: var(--sun-border); }
+footer span { color: var(--sun-border); font-weight: 700; }
 
 /* ── KEY ANIMATIONS ── */
 @keyframes rise {

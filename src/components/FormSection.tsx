@@ -58,7 +58,7 @@ export function FormSection() {
           <div className="s-label" style={{ justifyContent: 'center' }}>
             <span className="ghi-danh-text">Ghi Danh Miễn Phí</span>
           </div>
-          <h2>Cánh cửa tỉnh thức đang mở.<br /><em>Bạn chọn bước vào?</em></h2>
+          <h2>Cánh cửa tâm thức đang mở.<br /><em>Bạn chọn bước vào?</em></h2>
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '18px auto' }}>
             <div className="orn-line"></div>
             <motion.div
