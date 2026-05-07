@@ -14,6 +14,7 @@ import { Hero } from './components/Hero';
 import { Diagnosis } from './components/Diagnosis';
 import { Tower } from './components/Tower';
 import { Fit } from './components/Fit';
+import { FAQ } from './components/FAQ';
 import { FormSection } from './components/FormSection';
 import { Admin } from './components/Admin';
 
@@ -231,6 +232,7 @@ function Home() {
       <Tower />
       <Fit />
       <FormSection />
+      <FAQ />
 
       <footer>
         <p>© 2025 <span>Sống Sáng Suốt</span> &nbsp;·&nbsp; Rèn Tâm – Sáng Trí – Vững Bước &nbsp;·&nbsp; Chuyển Dịch Tâm Thức – Kiến Tạo Cuộc Đời</p>
