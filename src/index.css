@@ -1131,6 +1131,9 @@ h2 em { font-style: normal; color: var(--gold-accent); }
   color: var(--text-muted); text-align: center;
 }
 
+.text-gold { color: var(--sun-main); }
+.mindset-sec { padding: 80px 0; background: var(--bg-soft); }
+
 /* ── VS SECTION ── */
 .vs-sec { margin-top: 60px; }
 .vs-container {
@@ -1159,8 +1162,9 @@ h2 em { font-style: normal; color: var(--gold-accent); }
 }
 
 .vs-right {
-  background: linear-gradient(135deg, var(--sun-gold), #8A6508);
-  color: #FFFFFF;
+  background: var(--warm-bg);
+  color: var(--ink);
+  border: 1px solid var(--sun-border);
   z-index: 1;
 }
 
@@ -1178,7 +1182,7 @@ h2 em { font-style: normal; color: var(--gold-accent); }
 }
 
 .vs-left .vs-icon-main { color: var(--ink-soft); }
-.vs-right .vs-icon-main { color: var(--sun-bright); }
+.vs-right .vs-icon-main { color: var(--sun-main); }
 
 .vs-titles h3 {
   font-family: var(--serif);
@@ -1188,7 +1192,7 @@ h2 em { font-style: normal; color: var(--gold-accent); }
 }
 
 .vs-left .vs-titles h3 { color: var(--ink); }
-.vs-right .vs-titles h3 { color: #fff; }
+.vs-right .vs-titles h3 { color: var(--sun-main); }
 
 .vs-titles p {
   font-size: 13px;
@@ -1213,7 +1217,7 @@ h2 em { font-style: normal; color: var(--gold-accent); }
 }
 
 .vs-right .vs-list li {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(184, 134, 11, 0.1);
 }
 
 .vs-list li:last-child { border-bottom: none; }
@@ -1233,8 +1237,8 @@ h2 em { font-style: normal; color: var(--gold-accent); }
 }
 
 .vs-right .vs-item-icon {
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+  background: rgba(184, 134, 11, 0.1);
+  color: var(--sun-main);
 }
 
 .vs-circle-wrap {

@@ -13,6 +13,7 @@ import './index.css';
 import { Hero } from './components/Hero';
 import { Diagnosis } from './components/Diagnosis';
 import { Tower } from './components/Tower';
+import { MindsetComparison } from './components/MindsetComparison';
 import { Fit } from './components/Fit';
 import { FAQ } from './components/FAQ';
 import { FormSection } from './components/FormSection';
@@ -230,6 +231,7 @@ function Home() {
       <Hero />
       <Diagnosis />
       <Tower />
+      <MindsetComparison />
       <Fit />
       <FormSection />
       <FAQ />
