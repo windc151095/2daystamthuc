@@ -41,7 +41,7 @@ export function Diagnosis() {
   ];
 
   return (
-    <section className="diag">
+    <section className="diag" id="chan-doan">
       <div className="container">
         <div className="rv" style={{ textAlign: 'center' }}>
           <div className="s-label" style={{ justifyContent: 'center' }}>BẠN CÓ ĐANG GẶP ĐIỀU NÀY?</div>
@@ -70,7 +70,7 @@ export function Diagnosis() {
         </div>
         <div className="rv" style={{ textAlign: 'center', marginTop: '40px' }}>
           <a href="#dang-ky" className="btn-secondary" style={{ display: 'inline-block' }}>
-            <span className="ghi-danh-text">KHÁM PHÁ THÊM BÊN TRONG BẠN</span>
+            <span className="ghi-danh-text">NHẬN CÔNG THỨC DỊCH CHUYỂN</span>
           </a>
         </div>
       </div>

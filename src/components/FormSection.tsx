@@ -75,10 +75,10 @@ export function FormSection() {
           {!formSubmitted ? (
             <div>
               <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                <h3 style={{ textTransform: 'uppercase', color: 'var(--sun-main)', letterSpacing: '2px', fontSize: '22px', fontWeight: '700', marginBottom: '8px', lineHeight: '1.2' }}>
+                <h3 style={{ textTransform: 'uppercase', color: 'var(--sun-main)', letterSpacing: '2px', fontSize: '24px', fontWeight: '700', marginBottom: '8px', lineHeight: '1.2' }}>
                   Đăng Ký Trải Nghiệm
                 </h3>
-                <p style={{ opacity: 0.7, fontSize: '15px', color: 'var(--ink)' }}>
+                <p style={{ opacity: 0.7, fontSize: '17px', color: 'var(--ink)' }}>
                   Nhận tài liệu và ZOOM hướng dẫn học - thực hành
                 </p>
               </div>

@@ -10,11 +10,9 @@ export function Tower() {
           <div className="orn" style={{ justifyContent: 'center', maxWidth: '280px', margin: '20px auto' }}>
             <div className="orn-line"></div>✦<div className="orn-line"></div>
           </div>
-          <p className="lead" style={{ margin: '0 auto' }}>10 tầng tâm thức — mỗi tầng là một cách bạn đang sống, yêu thương và làm việc. Hãy nhìn thật rõ.</p>
+          <p className="lead" style={{ margin: '0 auto' }}>8 tầng tâm thức — Nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức từng hành vi, lời nói, suy nghĩ thông qua tháp ánh sáng</p>
         </div>
         <div className="tower-wrap rv" style={{ transitionDelay: '.2s' }}>
-          <div className="tier t10">Tỉnh Thức <span className="tier-n">10</span></div>
-          <div className="tier t9">Giác Ngộ <span className="tier-n">9</span></div>
           <div className="tier t8">Tâm Thức <span className="tier-n">8</span></div>
           <div className="tier t7">Giao Thức <span className="tier-n">7</span></div>
           <div className="tier t6">Duy Thức <span className="tier-n">6</span></div>
