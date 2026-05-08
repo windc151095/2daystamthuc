@@ -8,7 +8,7 @@ export function Tower() {
           <div className="s-label" style={{ justifyContent: 'center' }}>Bản Đồ Tâm Thức</div>
           <h2>Tháp Ánh Sáng<br /><em>Bạn đang ở tầng nào?</em></h2>
           <div className="orn form-orn-fix">
-            <div className="orn-line"></div>☯<div className="orn-line"></div>
+            <div className="orn-line"></div>☼<div className="orn-line"></div>
           </div>
           <p className="lead mx-auto">8 tầng tâm thức — Nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức từng hành vi, lời nói, suy nghĩ thông qua tháp ánh sáng</p>
         </div>

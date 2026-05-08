@@ -47,7 +47,7 @@ export function Diagnosis() {
           <div className="s-label" style={{ justifyContent: 'center' }}>BẠN CÓ ĐANG GẶP ĐIỀU NÀY?</div>
           <h2>Nếu <span className="text-highlight">Vô Thức</span> Làm Chủ Cuộc Đời</h2>
           <div className="orn form-orn-fix">
-            <div className="orn-line"></div>☯<div className="orn-line"></div>
+            <div className="orn-line"></div>☼<div className="orn-line"></div>
           </div>
           <p className="lead mx-auto" style={{ maxWidth: '800px' }}>
             Phần lớn chúng ta sống và phản ứng theo vô thức — Hãy đọc thật chậm 06 biểu hiện dưới đây

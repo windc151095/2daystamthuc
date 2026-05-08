@@ -28,7 +28,7 @@ export function Hero() {
         <Gift size={52} />
       </motion.span>
       <div className="hero-program-badge">
-        <span className="badge-icon">☯</span>
+        <span className="badge-icon">☼</span>
         <span>HÀNH LÀ TĂNG HIỂU BIẾT - NĂNG LỰC THẬT - BÀI HỌC SÂU SẮC MỖI NGÀY</span>
       </div>
       <h1 className="hero-title">Sử dụng <span className="text-highlight">Tâm Thức</span><br />đạt đến quyết định và hành động<br />chính xác</h1>

@@ -8,7 +8,7 @@ export const MindsetComparison: React.FC = () => {
           <div className="s-label" style={{ justifyContent: 'center' }}>LỰA CHỌN CỦA BẠN</div>
           <h2>Bạn Chọn Sống <em>Vô Thức</em> Hay <em>Tâm Thức?</em></h2>
           <div className="orn form-orn-fix">
-            <div className="orn-line"></div>☯<div className="orn-line"></div>
+            <div className="orn-line"></div>☼<div className="orn-line"></div>
           </div>
         </div>
 
