@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import { db, auth, handleFirestoreError, OperationType, signInWithGoogle } from '../lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import { collection, query, orderBy, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { LogOut, Save, RefreshCw, User, Phone, Calendar, ExternalLink, Edit, Trash2, X, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { LogOut, Save, RefreshCw, User, Phone, Calendar, ExternalLink, Edit, Trash2, X, MessageSquare, CheckCircle2, Image, Plus } from 'lucide-react';
 
 interface Lead {
   id: string;
@@ -14,9 +15,18 @@ interface Lead {
   history?: string[];
 }
 
+interface ShowcaseItem {
+  id: string;
+  imageUrl: string;
+  title: string;
+  description?: string;
+  createdAt: any;
+}
+
 export function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [leads, setLeads] = useState<Lead[]>([]);
+  const [showcase, setShowcase] = useState<ShowcaseItem[]>([]);
   const [zaloLink, setZaloLink] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -25,19 +35,42 @@ export function Admin() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editStatus, setEditStatus] = useState<Lead['status']>('new');
   const [editNotes, setEditNotes] = useState('');
+
+  // Showcase form
+  const [newShowcase, setNewShowcase] = useState({ title: '', imageUrl: '', description: '' });
+  const [showAddShowcase, setShowAddShowcase] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const sessionAuth = sessionStorage.getItem('admin_auth');
-    if (sessionAuth === 'true') {
-      setIsLoggedIn(true);
-      fetchData();
-    } else {
-      navigate('/');
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user && user.email === 'congnguyen151095@gmail.com') {
+        setIsLoggedIn(true);
+        fetchData();
+      } else {
+        const sessionAuth = sessionStorage.getItem('admin_auth');
+        if (sessionAuth === 'true') {
+          setIsLoggedIn(true);
+          fetchData();
+        } else {
+          navigate('/');
+        }
+      }
+    });
+
+    return () => unsubscribe();
   }, [navigate]);
 
-  const handleLogout = () => {
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle();
+      setSuccess('Đã đăng nhập Google thành công!');
+    } catch (err: any) {
+      setError('Đăng nhập Google thất bại: ' + err.message);
+    }
+  };
+
+  const handleLogout = async () => {
+    await auth.signOut();
     sessionStorage.removeItem('admin_auth');
     navigate('/');
   };
@@ -63,6 +96,12 @@ export function Admin() {
       } else {
         setZaloLink('#');
       }
+
+      // Fetch Showcase
+      const showcaseQuery = query(collection(db, 'showcase'), orderBy('createdAt', 'desc'));
+      const showcaseSnap = await getDocs(showcaseQuery);
+      const showcaseData = showcaseSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })) as ShowcaseItem[];
+      setShowcase(showcaseData);
     } catch (err: any) {
       console.error(err);
       setError('Không thể tải dữ liệu. Vui lòng kiểm tra lại kết nối mạng.');
@@ -133,6 +172,42 @@ export function Admin() {
     }
   };
 
+  const handleAddShowcase = async () => {
+    if (!newShowcase.title || !newShowcase.imageUrl) {
+      setError('Vui lòng nhập tiêu đề và link ảnh');
+      return;
+    }
+    setLoading(true);
+    try {
+      const showcaseRef = doc(collection(db, 'showcase'));
+      await setDoc(showcaseRef, {
+        ...newShowcase,
+        createdAt: new Date()
+      });
+      setNewShowcase({ title: '', imageUrl: '', description: '' });
+      setShowAddShowcase(false);
+      setSuccess('Đã thêm thẻ mới vào album!');
+      fetchData();
+    } catch (err) {
+      handleFirestoreError(err, OperationType.WRITE, 'showcase');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteShowcase = async (id: string) => {
+    if (!window.confirm('Xóa ảnh này khỏi album?')) return;
+    setLoading(true);
+    try {
+      await deleteDoc(doc(db, 'showcase', id));
+      fetchData();
+    } catch (err) {
+      handleFirestoreError(err, OperationType.DELETE, `showcase/${id}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const getStatusColor = (status?: string) => {
     switch (status) {
       case 'contacted': return '#2196f3';
@@ -167,6 +242,26 @@ export function Admin() {
       <main className="admin-content">
         <section className="admin-section">
           <div className="section-header">
+            <h3>Xác Thực Quyền Hạn</h3>
+            {!auth.currentUser ? (
+              <button onClick={handleGoogleLogin} className="btn-save" style={{ background: '#4285f4', border: 'none' }}>
+                <RefreshCw size={16} /> ĐĂNG NHẬP GOOGLE
+              </button>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span className="success-msg" style={{ margin: 0 }}>✓ Đã xác thực: {auth.currentUser.email}</span>
+              </div>
+            )}
+          </div>
+          {!auth.currentUser && (
+            <p style={{ fontSize: '13px', color: '#666', marginTop: '10px' }}>
+              * Lưu ý: Hệ thống yêu cầu xác thực Google với email <strong>congnguyen151095@gmail.com</strong> để có quyền ghi dữ liệu vào Album và Cấu hình.
+            </p>
+          )}
+        </section>
+
+        <section className="admin-section">
+          <div className="section-header">
             <h3>Cấu Hình Hệ Thống</h3>
           </div>
           <div className="settings-card">
@@ -185,6 +280,57 @@ export function Admin() {
               </div>
               {success && <p className="success-msg">{success}</p>}
             </div>
+          </div>
+        </section>
+
+        <section className="admin-section">
+          <div className="section-header">
+            <h3>Album Bài Tập ({showcase.length})</h3>
+            <button onClick={() => setShowAddShowcase(!showAddShowcase)} className="btn-icon-text">
+              {showAddShowcase ? <X size={16} /> : <Plus size={16} />} 
+              {showAddShowcase ? 'Đóng' : 'Thêm mới'}
+            </button>
+          </div>
+
+          {showAddShowcase && (
+            <div className="settings-card" style={{ marginBottom: '20px' }}>
+              <div className="showcase-form">
+                <input 
+                  type="text" 
+                  placeholder="Tiêu đề bài tập" 
+                  value={newShowcase.title}
+                  onChange={e => setNewShowcase({...newShowcase, title: e.target.value})}
+                />
+                <input 
+                  type="text" 
+                  placeholder="Link hình ảnh (URL)" 
+                  value={newShowcase.imageUrl}
+                  onChange={e => setNewShowcase({...newShowcase, imageUrl: e.target.value})}
+                />
+                <textarea 
+                  placeholder="Mô tả ngắn" 
+                  value={newShowcase.description}
+                  onChange={e => setNewShowcase({...newShowcase, description: e.target.value})}
+                />
+                <button onClick={handleAddShowcase} className="btn-save" disabled={loading}>
+                   {loading ? 'ĐANG LƯU...' : 'LƯU THÔNG TIN'}
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="admin-showcase-grid">
+            {showcase.map(item => (
+              <div key={item.id} className="admin-showcase-item">
+                <img src={item.imageUrl} alt={item.title} />
+                <div className="item-meta">
+                  <h4>{item.title}</h4>
+                  <button onClick={() => handleDeleteShowcase(item.id)} className="btn-action-icon delete">
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

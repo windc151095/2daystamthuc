@@ -9,6 +9,7 @@ import { Gift, User, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { motion, useAnimation } from 'motion/react';
 import './index.css';
+import { signInWithGoogle } from './lib/firebase';
 
 import { Hero } from './components/Hero';
 import { Diagnosis } from './components/Diagnosis';
@@ -18,6 +19,7 @@ import { Fit } from './components/Fit';
 import { FAQ } from './components/FAQ';
 import { FormSection } from './components/FormSection';
 import { Admin } from './components/Admin';
+import { Showcase } from './components/Showcase';
 
 function Home() {
   const [navPadding, setNavPadding] = useState('16px 40px');
@@ -222,6 +224,22 @@ function Home() {
                 />
                 {error && <div className="popup-error">{error}</div>}
                 <button type="submit">ĐĂNG NHẬP</button>
+                <div style={{ margin: '15px 0 5px', textAlign: 'center', fontSize: '12px', color: '#999' }}>HOẶC</div>
+                <button 
+                  type="button" 
+                  className="btn-google-login"
+                  onClick={async () => {
+                    try {
+                      await signInWithGoogle();
+                      setShowLogin(false);
+                      navigate('/admin');
+                    } catch (err: any) {
+                      setError('Lỗi Google: ' + err.message);
+                    }
+                  }}
+                >
+                  TIẾP TỤC VỚI GOOGLE
+                </button>
               </form>
             </div>
           )}
@@ -233,6 +251,7 @@ function Home() {
       <Tower />
       <MindsetComparison />
       <Fit />
+      <Showcase />
       <FormSection />
       <FAQ />
 
