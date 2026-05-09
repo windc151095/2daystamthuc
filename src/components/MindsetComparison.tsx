@@ -48,11 +48,11 @@ export const MindsetComparison: React.FC = () => {
               </div>
               <ul className="vs-list">
                 <li><span className="vs-item-icon">+</span> Tĩnh tâm lại, giải quyết tâm mình trước khi giải quyết cảnh</li>
-                <li><span className="vs-item-icon">+</span> Trong lúc sáng suốt, tỉnh thức mới đi xử lý việc</li>
+                <li><span className="vs-item-icon">+</span> Trong lúc sáng suốt, tâm thức mới xử lý việc thành công</li>
                 <li><span className="vs-item-icon">+</span> Đặt tâm thật vào từng việc — tạo ra giá trị khác biệt</li>
                 <li><span className="vs-item-icon">+</span> Biết ơn cả những tình huống khó — vì nó dạy mình nâng cấp</li>
                 <li><span className="vs-item-icon">+</span> Làm chủ cảm xúc — hạnh phúc không phụ thuộc người ngoài</li>
-                <li><span className="vs-item-icon">+</span> Giải quyết việc xong — mặt tươi, lòng nhẹ, khách hàng vui</li>
+                <li><span className="vs-item-icon">+</span> Giải quyết việc xong - mặt tươi, lòng nhẹ, người đối diện vui vẻ, tâm phục - khẩu phục</li>
               </ul>
             </div>
           </div>

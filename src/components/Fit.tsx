@@ -8,7 +8,7 @@ export function Fit() {
           <div className="s-label" style={{ justifyContent: 'center' }}>Ai Nên Tham Gia?</div>
           <h2>Hành trình này <em>dành cho bạn</em> — hay không?</h2>
           <div className="orn form-orn-fix">
-            <div className="orn-line"></div>☯<div className="orn-line"></div>
+            <div className="orn-line"></div>☼<div className="orn-line"></div>
           </div>
         </div>
         <div className="fit-grid">
