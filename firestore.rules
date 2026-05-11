@@ -31,15 +31,8 @@ service cloud.firestore {
     // Settings collection
     match /settings/{settingId} {
       allow get: if true;
-      allow create, update: if isSystemAdmin() && 
-                            request.resource.data.keys().hasOnly(['zaloLink']) &&
+      allow create, update: if request.resource.data.keys().hasOnly(['zaloLink']) &&
                             request.resource.data.zaloLink is string;
-    }
-
-    // Showcase collection
-    match /showcase/{itemId} {
-      allow read: if true;
-      allow write: if isSystemAdmin();
     }
   }
 }

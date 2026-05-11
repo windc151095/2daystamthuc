@@ -25,19 +25,6 @@
         "zaloLink": { "type": "string" }
       },
       "required": ["zaloLink"]
-    },
-    "ShowcaseItem": {
-      "title": "Showcase Item",
-      "description": "Visual transformation or exercise application content",
-      "type": "object",
-      "properties": {
-        "imageUrl": { "type": "string", "description": "URL of the image" },
-        "title": { "type": "string", "description": "Title of the lesson/transformation" },
-        "description": { "type": "string", "description": "Short description" },
-        "order": { "type": "number", "description": "Display order" },
-        "createdAt": { "type": "string", "format": "date-time" }
-      },
-      "required": ["imageUrl", "title", "createdAt"]
     }
   },
   "firestore": {
@@ -48,10 +35,6 @@
     "/settings/{settingId}": {
       "schema": "Setting",
       "description": "App settings like Zalo group link"
-    },
-    "/showcase/{itemId}": {
-      "schema": "ShowcaseItem",
-      "description": "Transformation album items"
     }
   }
 }
