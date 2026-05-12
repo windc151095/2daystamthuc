@@ -60,34 +60,132 @@ const TOWER_DATA = [
   }
 ];
 
+const UC_DATA = [
+  {
+    id: 1,
+    name: 'Theo thói quen',
+    region: 'Vùng Hủy Diệt',
+    description: 'Hành vi lặp lại hàng ngày thiếu kiểm soát của ý thức. Biết cần phải thay đổi nhưng thói quen cũ vẫn lôi kéo và trì hoãn.',
+    className: 'uc1'
+  },
+  {
+    id: 2,
+    name: 'Thấy bình thường',
+    region: 'Vùng Hủy Diệt',
+    description: 'Coi thói xấu và sự trì trệ là hiển nhiên, không muốn thay đổi. Coi những mâu thuẫn hay khó khăn là chuyện bình thường, phớt lờ việc giải quyết.',
+    className: 'uc2'
+  },
+  {
+    id: 3,
+    name: 'Không biết mình vô thức',
+    region: 'Vùng Hủy Diệt',
+    description: 'Mất khả năng tự nhận thức, cảm biến tê liệt dẫn đến vô cảm. Làm việc thiếu trách nhiệm nhưng không tự nhận thức được lỗi của mình, để mặc mọi chuyện trôi đi.',
+    className: 'uc3'
+  },
+  {
+    id: 4,
+    name: 'Tự thấy mình to (Cái tôi)',
+    region: 'Vùng Hủy Diệt',
+    description: 'Sự cố chấp, tự mãn, luôn cho mình là đúng. Thường xuyên áp đặt ý kiến lên người khác, không chịu lắng nghe vì tự thấy mình là nhất.',
+    className: 'uc4'
+  },
+  {
+    id: 5,
+    name: 'Không thích học hỏi',
+    region: 'Vùng Hủy Diệt',
+    description: 'Từ chối tri thức mới, ngại thay đổi, thích hưởng thụ thụ động. Từ chối tiếp nhận cách làm mới vì lười biếng và bảo thủ với thói quen cũ.',
+    className: 'uc5'
+  },
+  {
+    id: 6,
+    name: 'Năng lượng ù lì',
+    region: 'Vùng Hủy Diệt',
+    description: 'Trạng thái trì trệ, lười biếng, thiếu sức sống. Cảm thấy uể oải, không có động lực để thực hiện bất kỳ mục tiêu nào đã đề ra.',
+    className: 'uc6'
+  },
+  {
+    id: 7,
+    name: 'Dạng "Ba phải"',
+    region: 'Vùng Hủy Diệt',
+    description: 'Sống không lập trường, lươn lẹo, "gió chiều nào che chiều nấy". Khi mắc lỗi thường tìm cách lươn lẹo, đổ lỗi cho hoàn cảnh hoặc người khác.',
+    className: 'uc7'
+  },
+  {
+    id: 8,
+    name: 'Lưỡi trước não (Nói phét)',
+    region: 'Vùng Hủy Diệt',
+    description: 'Nói mà không nghĩ, hứa suông hoặc nói sai sự thật. Hứa việc chưa biết có làm được không chỉ để lấy lòng hoặc che đậy, não chưa hề tính toán lộ trình.',
+    className: 'uc8'
+  },
+  {
+    id: 9,
+    name: 'Không biết ngày mai & Mất nhân cách',
+    region: 'Vùng Hủy Diệt',
+    description: 'Sống vị kỷ, chỉ biết hiện tại, bỏ mặc tương lai. Tổng hợp của "Cục - Cùn - Cụt - Chơ". Nổi cáu và nói cùn khi bị góp ý, sống buông thả, không còn lòng tự trọng.',
+    className: 'uc9'
+  }
+];
+
 export function Tower() {
   const [activeTierId, setActiveTierId] = useState<number | null>(null);
+  const [viewMode, setViewMode] = useState<'light' | 'unconscious'>('light');
 
-  const activeTier = TOWER_DATA.find(t => t.id === activeTierId);
+  const activeData = viewMode === 'light' ? TOWER_DATA : UC_DATA;
+  const activeTier = activeData.find(t => t.id === activeTierId);
+
+  const toggleView = () => {
+    setViewMode(prev => prev === 'light' ? 'unconscious' : 'light');
+    setActiveTierId(null);
+  };
 
   return (
-    <section className="tower-sec">
+    <section className="tower-sec" id="thap-anh-sang">
       <div className="container">
         <div className="rv text-center">
-          <div className="s-label" style={{ justifyContent: 'center' }}>Bản Đồ Tâm Thức</div>
-          <h2>Tháp Ánh Sáng<br /><em>Bạn đang ở tầng nào?</em></h2>
+          <div className="s-label" style={{ justifyContent: 'center' }}>
+            {viewMode === 'light' ? 'Bản Đồ Tâm Thức' : 'Vùng Hủy Diệt'}
+          </div>
+          <h2>
+            {viewMode === 'light' ? (
+              <>Tháp Ánh Sáng<br /><em>Bạn đang ở tầng nào?</em></>
+            ) : (
+              <>9 Cấp Độ Của<br /><em>Vô Thức</em></>
+            )}
+          </h2>
           <div className="orn form-orn-fix">
             <div className="orn-line"></div>☼<div className="orn-line"></div>
           </div>
-          <p className="lead mx-auto">8 tầng tâm thức — Nhấn hoặc di chuột vào từng tầng để nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức.</p>
+          <p className="lead mx-auto">
+            {viewMode === 'light' 
+              ? '8 tầng tâm thức — Nhấn hoặc di chuột vào từng tầng để nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức.'
+              : 'Sự chìm đắm trong vô thức diễn ra qua nhiều mức độ khác nhau. Nhận diện rõ để biết mình đang ở đâu và tìm cách thoát khỏi bóng tối của thói quen.'
+            }
+          </p>
+
+          <div style={{ marginTop: '24px' }}>
+            <button 
+              onClick={toggleView}
+              className="view-toggle-btn"
+            >
+              {viewMode === 'light' ? 'Xem Thêm 9 Cấp Độ Của Vô Thức' : 'Quay Lại Tháp Ánh Sáng'}
+            </button>
+          </div>
         </div>
+
         <div className="tower-wrap rv" style={{ transitionDelay: '.2s' }} onMouseLeave={() => setActiveTierId(null)}>
-          {TOWER_DATA.map((tier) => (
+          {activeData.map((tier) => (
             <div key={tier.id} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              {tier.id === 8 && <div className="z-tag zL" style={{ width: '100%' }}>↑ Vùng Ánh Sáng</div>}
-              {tier.id === 5 && <>
+              {viewMode === 'light' && tier.id === 8 && <div className="z-tag zL" style={{ width: '100%' }}>↑ Vùng Ánh Sáng</div>}
+              {viewMode === 'light' && tier.id === 5 && <>
                 <div style={{ height: '10px' }}></div>
                 <div className="z-tag zF" style={{ width: '64%' }}>↑ Vùng Mong Manh</div>
               </>}
-              {tier.id === 3 && <>
+              {viewMode === 'light' && tier.id === 3 && <>
                 <div style={{ height: '24px' }}></div>
                 <div className="z-tag zD" style={{ width: '100%' }}>↑ Vùng Hủy Diệt</div>
               </>}
+
+              {viewMode === 'unconscious' && tier.id === 1 && <div className="z-tag zD" style={{ width: '100%' }}>↓ Đi Sâu Vào Vô Thức</div>}
               
               <div 
                 className={`tier ${tier.className} ${activeTierId === tier.id ? 'active' : ''} ${activeTierId !== null && activeTierId !== tier.id ? 'dimmed' : ''}`}

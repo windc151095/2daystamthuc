@@ -45,8 +45,8 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
 export const FAQ: React.FC = () => {
   const faqs = [
     {
-      question: "1. Tôi chưa biết gì về tâm thức, có theo kịp không?",
-      answer: "Hoàn toàn phù hợp cho người mới bắt đầu. Hệ tri thức đã đóng gói thành bộ công thức dễ hành, dễ ứng dụng vào cuộc sống. Điều duy nhất bạn cần mang theo là sự tò mò và sẵn sàng trải nghiệm."
+      question: "1. Tôi chưa hiểu gì về tâm thức, tôi có ứng dụng được nó không?",
+      answer: "Hệ tri thức đã đóng gói thành bộ công thức dễ hành, dễ ứng dụng vào cuộc sống. Những điều làm bạn mắc kẹt bên trong từ lâu bạn đã từng đi tìm lời giải thâm chí giải đi giải lại rất nhiều nhưng chưa có kết quả. Hãy trải nghiệm công thức ở đây và chính bạn sẽ tìm thấy lời giải chính xác nhất cho chính sự mắc kẹt trong tâm bạn."
     },
     {
       question: "2. Đây có phải là khóa thiền, coaching hay không?",
@@ -54,7 +54,7 @@ export const FAQ: React.FC = () => {
     },
     {
       question: "3. Học phí là bao nhiêu?",
-      answer: "Đây là một hành trình, có môi trường, những người bạn khát học, lấy hệ tri thức gốc là sợi dây kết nối để cùng nhau rèn luyện và tăng trưởng. Hãy hỏi thêm người bạn HDV của bạn để biết thêm về lộ trình học tập nhé."
+      answer: "Kiếm tiền đã khó một nhưng tiêu tiền thì khó gấp 100 lần. Một ngày chỉ cần một tích tắc tiêu cho thói quen, cái sai, cái ngu của bản thân thì nó kinh khủng hơn vậy nhiều. Nhưng lấy một phần rất nhỏ trong cái sai đó của bạn và bù đắp bằng chính sự tận tâm đến cùng để giúp bạn có được công thức thực hành và giải thoát cái sai. Điều đó tiết kiệm được thời gian, công sức, tiền bạc và tương lai của bạn phải không?"
     }
   ];
 
