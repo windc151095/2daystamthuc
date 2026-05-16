@@ -916,6 +916,23 @@ h2 em { font-style: normal; color: var(--gold-accent); }
   position: relative;
 }
 
+.click-hint {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sun-main);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 16px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
 .tier-expanded-panel {
   position: relative;
   background: rgba(0, 0, 0, 0.25);
@@ -973,6 +990,8 @@ h2 em { font-style: normal; color: var(--gold-accent); }
   font-size: 16px;
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
+  white-space: pre-wrap;
+  text-align: left;
 }
 
 .tier-examples {
@@ -1068,25 +1087,47 @@ h2 em { font-style: normal; color: var(--gold-accent); }
 .uc9 { background: linear-gradient(90deg, #090600, #0F0900); color: #888; }
 
 .view-toggle-btn {
-  padding: 14px 32px;
-  font-size: 15px;
+  padding: 12px 24px;
+  font-size: 14px;
   font-family: var(--sans);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 8px;
-  background: var(--sun-main);
-  color: var(--white);
-  box-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(0,0,0,0.1);
   cursor: pointer;
 }
 .view-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.view-toggle-btn.active-btn {
+  background: var(--sun-main);
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
+  border-color: rgba(255,255,255,0.2);
+}
+.view-toggle-btn.active-btn:hover {
   background: var(--gold-accent);
   color: var(--ink);
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
   transform: translateY(-2px);
+}
+
+.example-context-box {
+  max-width: 600px;
+  margin: 32px auto 0;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.5);
+  border-left: 4px solid var(--sun-main);
+  border-radius: 0 12px 12px 0;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .z-tag {

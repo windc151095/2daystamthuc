@@ -172,15 +172,74 @@ const UC_DATA = [
   }
 ];
 
+const EXAMPLE_DATA = [
+  {
+    id: 1,
+    name: 'Tà thức',
+    region: 'Vùng Hủy Diệt',
+    description: 'Bóp méo sự thật: Không tìm cách sửa lỗi mà tìm cách che giấu, hạ bệ, đổ tội.\n\nBạn có thể nói xấu Nam, đẩy hết trách nhiệm cho Nam, hoặc bịa lý do với khách hàng như: "hệ thống lỗi", "virus", "mất điện".\n\n- Cốt lõi: Không giải quyết vấn đề, chỉ bảo vệ cái tôi bằng sự gian dối.\n- Hậu quả: Mất uy tín, mất niềm tin, làm bối cảnh tối thêm.',
+    className: 't1'
+  },
+  {
+    id: 2,
+    name: 'Tưởng thức',
+    region: 'Vùng Hủy Diệt',
+    description: 'Tự diễn trong sợ hãi: Tâm trí bắt đầu vẽ ra hàng loạt kịch bản xấu: "Chết rồi, chắc bị đuổi việc." "Sếp sẽ ghét mình." "Khách hàng hủy hợp đồng mất."\n\nThực tế chưa chắc đã sụp đổ, nhưng trong đầu đã tự tạo ra một cơn bão.\n\n- Cốt lõi: Bị nỗi sợ kéo đi.\n- Hậu quả: Mất bình tĩnh, mất năng lượng, không còn đủ sáng để hành động.',
+    className: 't2'
+  },
+  {
+    id: 3,
+    name: 'Vô thức',
+    region: 'Vùng Hủy Diệt',
+    description: 'Đổ lỗi và phản ứng bản năng: Cái tôi trỗi dậy. Bạn quát Nam, đập bàn, thanh minh với sếp: "Lỗi là của Nam, tôi không liên quan." Bạn phản ứng để tự vệ, không phải để giải quyết.\n\n- Cốt lõi: Bị cái tôi điều khiển.\n- Hậu quả: Nam sụp hơn, sếp giận hơn, đội nhóm rối hơn.',
+    className: 't3'
+  },
+  {
+    id: 4,
+    name: 'Nhận thức',
+    region: 'Vùng Mong Manh',
+    description: 'Bắt đầu thấy mình sai: Bạn bắt đầu giật mình: "Mình đang nóng." "Mình đang đổ lỗi." "Mình cũng đang góp phần làm bối cảnh nặng hơn."\n\nĐây là lúc ánh sáng bắt đầu xuất hiện, nhưng nội lực chưa đủ mạnh. Biết mình sai, nhưng trong lòng vẫn còn ấm ức, khó chịu.\n\n- Cốt lõi: Đã thấy vấn đề trong chính mình.\n- Hạn chế: Thấy được nhưng chưa chuyển hóa được.',
+    className: 't4'
+  },
+  {
+    id: 5,
+    name: 'Ý thức',
+    region: 'Vùng Mong Manh',
+    description: 'Muốn sửa nhưng còn gồng: Bạn tự nhắc mình: "Không được nổi nóng." "Phải bình tĩnh." "Phải lo giải pháp."\n\nNhưng bên trong vẫn căng. Mặt còn nặng, lòng còn bực, năng lượng chưa thật sự thông.\n\n- Cốt lõi: Đã muốn làm chủ bối cảnh.\n- Hạn chế: Vẫn đang kìm nén, chưa thật sự tự do.',
+    className: 't5'
+  },
+  {
+    id: 6,
+    name: 'Duy thức',
+    region: 'Vùng Ánh Sáng',
+    description: 'Nhìn ra nguyên nhân sâu: Bạn bắt đầu nhìn vấn đề bằng kinh nghiệm và chiều sâu:\nNam sai, nhưng không chỉ Nam sai. Lỗi còn nằm ở quy trình backup, kiểm tra dữ liệu, phân quyền, giám sát trước giờ G.\n\nBạn cũng thấy cơn giận của mình đến từ sĩ diện, nỗi sợ và cái tôi bị chạm.\n\n- Cốt lõi: Nhìn được nguyên nhân — hệ quả.\n- Giá trị: Không chỉ xử lý ngọn, bắt đầu thấy gốc.',
+    className: 't6'
+  },
+  {
+    id: 7,
+    name: 'Giao thức',
+    region: 'Vùng Ánh Sáng',
+    description: 'Chuyển hóa bằng hành động đúng: Bạn bắt đầu đóng lại những dòng năng lượng cũ: đổ lỗi, oán trách, hoảng loạn. Đồng thời mở ra dòng mới: bình tĩnh, giao tiếp, giải pháp.\n\nBạn biết cần nói gì với Nam, nói gì với sếp, nói gì với khách hàng.\n\n- Cốt lõi: Biết giao tiếp đúng người, đúng lúc, đúng năng lượng.\n- Giá trị: Bối cảnh bắt đầu được sắp xếp lại.',
+    className: 't7'
+  },
+  {
+    id: 8,
+    name: 'Tâm thức',
+    region: 'Vùng Ánh Sáng',
+    description: 'Bình an, sáng rõ, có lực gánh vác: Không bị sự cố kéo chìm, không bị sếp giận hay Nam làm sinh oán. Đứng cao hơn bối cảnh và nhìn sự cố như bài huấn luyện bản lĩnh.\n\nHÀNH XỬ BẰNG TÂM THỨC:\n1. Với Nam — Lấy lại sự bình tĩnh: "Nam, nhìn vào anh. Không được để nỗi sợ làm tê liệt. Em có 15 phút kiểm tra lại backup. Anh sẽ nhận trách nhiệm và giải quyết cùng sếp." (Kéo người sai quay lại trách nhiệm)\n2. Với sếp — Hứng đỡ cơn giận: "Em xin lỗi sếp. Em xin nhận trách nhiệm vì chưa rà soát. Em đã cho rà soát khôi phục và em đã có phương án bù đắp với khách hàng." (Không phản ứng, chuyển hướng sang giải pháp)\n3. Với khách hàng — Nói thật và bù đắp: "Xin lỗi anh/chị vì sự cố chủ quan. Chúng tôi xin dời lịch ký sang sáng mai để làm lại thật hoàn chỉnh và xin tặng thêm gói hỗ trợ ngoài hợp đồng."\n\nĐÍCH ĐẾN:\nNam được kéo lên để học trách nhiệm. Sếp hạ hỏa vì có người gánh vác. Khách hàng nể phục sự trung thực và bản lĩnh của công ty.',
+    className: 't8'
+  }
+];
+
 export function Tower() {
   const [activeTierId, setActiveTierId] = useState<number | null>(null);
-  const [viewMode, setViewMode] = useState<'light' | 'unconscious'>('light');
+  const [viewMode, setViewMode] = useState<'light' | 'unconscious' | 'example'>('unconscious');
 
-  const activeData = viewMode === 'light' ? TOWER_DATA : UC_DATA;
+  const activeData = viewMode === 'light' ? TOWER_DATA : (viewMode === 'example' ? EXAMPLE_DATA : UC_DATA);
   const activeTier = activeData.find(t => t.id === activeTierId);
 
-  const toggleView = () => {
-    setViewMode(prev => prev === 'light' ? 'unconscious' : 'light');
+  const toggleView = (mode: 'light' | 'unconscious' | 'example') => {
+    setViewMode(mode);
     setActiveTierId(null);
   };
 
@@ -189,11 +248,13 @@ export function Tower() {
       <div className="container">
         <div className="rv text-center">
           <div className="s-label" style={{ justifyContent: 'center' }}>
-            {viewMode === 'light' ? 'Bản Đồ Tâm Thức' : 'Vùng Hủy Diệt'}
+            {viewMode === 'unconscious' ? 'Vùng Hủy Diệt' : 'Bản Đồ Tâm Thức'}
           </div>
           <h2>
             {viewMode === 'light' ? (
               <>Tháp Ánh Sáng<br /><em>Bạn đang ở tầng nào?</em></>
+            ) : viewMode === 'example' ? (
+              <>Ví Dụ Thực Tiễn<br /><em>Từng Tầng Tâm Thức</em></>
             ) : (
               <>9 Cấp Độ Của<br /><em>Vô Thức</em></>
             )}
@@ -204,18 +265,37 @@ export function Tower() {
           <p className="lead mx-auto">
             {viewMode === 'light' 
               ? '8 tầng tâm thức — Nhấn vào từng tầng để nhìn thật rõ sự chuyển động tâm của bạn và điều chỉnh ngay lập tức.'
-              : 'Sự chìm đắm trong vô thức diễn ra qua nhiều mức độ khác nhau. Nhấn vào từng cấp độ để nhận diện rõ mình đang ở đâu và tìm cách thoát khỏi bóng tối của thói quen.'
+              : viewMode === 'example' ? 'Nhấn vào các tầng để xem cách mỗi tầng phản ứng trước một sự cố mất dữ liệu.' : 'Sự chìm đắm trong vô thức diễn ra qua nhiều mức độ khác nhau. Nhấn vào từng cấp độ để nhận diện rõ mình đang ở đâu và tìm cách thoát khỏi bóng tối của thói quen.'
             }
           </p>
+          <div className="click-hint">↓ Bấm vào từng {(viewMode === 'light' || viewMode === 'example') ? 'tầng' : 'cấp độ'} để xem chi tiết ↓</div>
 
-          <div style={{ marginTop: '24px' }}>
+          <div style={{ marginTop: '24px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button 
-              onClick={toggleView}
-              className="view-toggle-btn"
+              onClick={() => toggleView('unconscious')}
+              className={`view-toggle-btn ${viewMode === 'unconscious' ? 'active-btn' : ''}`}
             >
-              {viewMode === 'light' ? 'Xem Thêm 9 Cấp Độ Của Vô Thức' : 'Quay Lại Tháp Ánh Sáng'}
+              9 Cấp Độ Vô Thức
+            </button>
+            <button 
+              onClick={() => toggleView('light')}
+              className={`view-toggle-btn ${viewMode === 'light' ? 'active-btn' : ''}`}
+            >
+              Tháp Ánh Sáng
+            </button>
+            <button 
+              onClick={() => toggleView('example')}
+              className={`view-toggle-btn ${viewMode === 'example' ? 'active-btn' : ''}`}
+            >
+              Khám Phá Ví Dụ
             </button>
           </div>
+
+          {viewMode === 'example' && (
+            <div className="example-context-box">
+              <strong>TÌNH HUỐNG THỰC TẾ:</strong> Trong một dự án quan trọng, Nam — đồng nghiệp cùng nhóm — sơ suất làm mất file dữ liệu khách hàng lớn ngay trước giờ ký hợp đồng. Sếp nổi giận, cả đội căng thẳng, khách hàng đang chờ. <em>Mỗi người sẽ hành xử ở tầng tâm thức nào khi nghịch cảnh xảy ra?</em>
+            </div>
+          )}
         </div>
 
         <AnimatePresence mode="wait">
