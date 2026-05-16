@@ -339,6 +339,13 @@ export function Tower() {
                       style={{ overflow: 'hidden', width: '92%', maxWidth: '520px' }}
                     >
                       <div className="tier-expanded-panel">
+                        <button 
+                          className="tier-expanded-close"
+                          onClick={(e) => { e.stopPropagation(); setActiveTierId(null); }}
+                          aria-label="Đóng"
+                        >
+                          ✕
+                        </button>
                         <div className="tier-expanded-header">
                           <h3 className="tier-expanded-title">{tier.name}</h3>
                           <span className="tier-expanded-region">{tier.region}</span>
