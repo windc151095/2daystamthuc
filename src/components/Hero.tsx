@@ -1,5 +1,6 @@
 import React from 'react';
-import { Gift, Compass } from 'lucide-react';
+import { Gift, Compass, Smartphone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import confetti from 'canvas-confetti';
 
@@ -47,6 +48,12 @@ export function Hero() {
             </motion.span>
             <span className="ghi-danh-text">GHI DANH NHẬN TÀI LIỆU HỌC TẬP</span>
           </a>
+        </div>
+        <div className="hero-cta">
+          <Link to="/ve-song-sang-suot" className="btn-hero-secondary" style={{ cursor: 'pointer', border: '1px solid var(--sun-main)' }}>
+            <Smartphone size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+            <span className="ghi-danh-text">Về Sống Sáng Suốt</span>
+          </Link>
         </div>
         <div className="hero-cta">
           <a href="#chan-doan" className="btn-hero-secondary">

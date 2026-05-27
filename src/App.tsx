@@ -18,6 +18,7 @@ import { Fit } from './components/Fit';
 import { FAQ } from './components/FAQ';
 import { FormSection } from './components/FormSection';
 import { Admin } from './components/Admin';
+import { AboutApp } from './components/AboutApp';
 
 function Home() {
   const [navPadding, setNavPadding] = useState('16px 40px');
@@ -249,6 +250,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/ve-song-sang-suot" element={<AboutApp />} />
       </Routes>
     </Router>
   );

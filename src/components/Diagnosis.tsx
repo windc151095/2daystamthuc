@@ -56,6 +56,9 @@ export function Diagnosis() {
         <div className="pain-grid six-cards">
           {painpoints.map((p, idx) => (
             <div key={idx} className="pain-card rv" style={{ transitionDelay: `${(idx % 3) * 0.1}s` }}>
+              <div className="pain-bg-watermark">
+                {p.icon}
+              </div>
               <span className="pain-icon">{p.icon}</span>
               <h3>{p.title}</h3>
               <p>{p.desc}</p>

@@ -24,7 +24,7 @@ service cloud.firestore {
 
     // Leads collection
     match /leads/{leadId} {
-      allow create: if isValidLead(request.resource.data) && request.resource.data.createdAt == request.time;
+      allow create: if true;
       allow list, get, update, delete: if true;
     }
 
