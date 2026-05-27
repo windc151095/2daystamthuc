@@ -183,6 +183,46 @@ function Home() {
           <Link to="/ve-song-sang-suot" className="nav-cta">
             <span className="ghi-danh-text">VỀ SỐNG SÁNG SUỐT</span>
           </Link>
+          <button 
+            className="nav-admin-link" 
+            title="Quản trị"
+            onClick={() => {
+              if (sessionStorage.getItem('admin_auth') === 'true') {
+                navigate('/admin');
+              } else {
+                setShowLogin(!showLogin);
+                setError('');
+              }
+            }}
+          >
+            <User size={16} />
+          </button>
+
+          {showLogin && (
+            <div className="login-popup">
+              <div className="popup-header">
+                <span>Quản Trị Viên</span>
+                <button onClick={() => setShowLogin(false)}><X size={14} /></button>
+              </div>
+              <form onSubmit={handleLogin}>
+                <input 
+                  type="text" 
+                  placeholder="Tài khoản" 
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  autoFocus
+                />
+                <input 
+                  type="password" 
+                  placeholder="Mật khẩu" 
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                {error && <div className="popup-error">{error}</div>}
+                <button type="submit">ĐĂNG NHẬP</button>
+              </form>
+            </div>
+          )}
         </div>
       </nav>
 
