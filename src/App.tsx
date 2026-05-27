@@ -4,10 +4,10 @@
  */
 
 import React, { useEffect, useRef, useState, FormEvent } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Gift, User, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { motion, useAnimation } from 'motion/react';
+import { motion, useAnimation, AnimatePresence } from 'motion/react';
 import './index.css';
 
 import { Hero } from './components/Hero';
@@ -180,52 +180,9 @@ function Home() {
           <div className="nav-slogan">Suốt ngày sống – Suốt ngày sáng – Suốt đời sống – Suốt đời sáng</div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
-          <a href="#dang-ky" className="nav-cta" onClick={handleGiftClick}>
-            <motion.span animate={giftControls} style={{ display: 'inline-flex' }}>
-              <Gift size={12} />
-            </motion.span>
-            <span className="ghi-danh-text" style={{ marginLeft: '4px' }}>GHI DANH MIỄN PHÍ</span>
-          </a>
-          <button 
-            className="nav-admin-link" 
-            title="Quản trị"
-            onClick={() => {
-              if (sessionStorage.getItem('admin_auth') === 'true') {
-                navigate('/admin');
-              } else {
-                setShowLogin(!showLogin);
-                setError('');
-              }
-            }}
-          >
-            <User size={16} />
-          </button>
-
-          {showLogin && (
-            <div className="login-popup">
-              <div className="popup-header">
-                <span>Quản Trị Viên</span>
-                <button onClick={() => setShowLogin(false)}><X size={14} /></button>
-              </div>
-              <form onSubmit={handleLogin}>
-                <input 
-                  type="text" 
-                  placeholder="Tài khoản" 
-                  value={username}
-                  onChange={e => setUsername(e.target.value)}
-                  autoFocus
-                />
-                <input 
-                  type="password" 
-                  placeholder="Mật khẩu" 
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                />
-                {error && <div className="popup-error">{error}</div>}
-                <button type="submit">ĐĂNG NHẬP</button>
-              </form>
-            </div>
-          )}
+          <Link to="/ve-song-sang-suot" className="nav-cta">
+            <span className="ghi-danh-text">VỀ SỐNG SÁNG SUỐT</span>
+          </Link>
         </div>
       </nav>
 
@@ -244,14 +201,42 @@ function Home() {
   );
 }
 
+const pageTransitionVariants = {
+  initial: { opacity: 0, y: 15 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  exit: { opacity: 0, y: -15, transition: { duration: 0.3, ease: "easeIn" } }
+};
+
+function PageTransition({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageTransitionVariants}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/admin" element={<PageTransition><Admin /></PageTransition>} />
+        <Route path="/ve-song-sang-suot" element={<PageTransition><AboutApp /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/ve-song-sang-suot" element={<AboutApp />} />
-      </Routes>
+      <AnimatedRoutes />
     </Router>
   );
 }
